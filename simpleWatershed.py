@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 
 
 # load the image
-image = cv2.imread('D:/A02.2020-08-27-20-07-49/A02_Bottom Slide_R_p01_0_A01f00d0.TIF', cv2.IMREAD_ANYDEPTH)
+image = cv2.imread('sampleImages/A02_Bottom Slide_R_p01_0_A01f00d0.TIF', cv2.IMREAD_ANYDEPTH)
 image = (image/4095)*255
 image = np.uint8(image)
 # image = cv2.cvtColor(image,cv2.COLOR_GRAY2BGR)
@@ -27,7 +27,7 @@ image = np.uint8(image)
 
 # In[3]:
 
-%matplotlib auto
+#%matplotlib auto
 cv2.imshow("Input", image)
 
 
@@ -86,6 +86,7 @@ for label in np.unique(labels):
 
 # show the output image
 cv2.imshow("Output", image)
+cv2.waitKey(0)
 
 
 
