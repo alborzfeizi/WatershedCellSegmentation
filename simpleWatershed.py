@@ -9,10 +9,8 @@ from skimage.morphology import watershed
 from skimage import color
 from scipy import ndimage
 import numpy as np
-import argparse
 import imutils
 import cv2
-import matplotlib.pyplot as plt
 
 
 # In[2]:
@@ -87,8 +85,8 @@ for label in np.unique(labels):
 # show the output image
 cv2.imshow("Output", image)
 cv2.waitKey(0)
-
-
+count_output = np.max(labels);
+print("Total number of cells detected: ", count_output);
 
 
 

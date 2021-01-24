@@ -13,10 +13,8 @@ from skimage.morphology import watershed
 from skimage import color
 from scipy import ndimage
 import numpy as np
-import argparse
 import imutils
 import cv2
-import matplotlib.pyplot as plt
 import copy
 
 class Ui_MainWindow(object):
