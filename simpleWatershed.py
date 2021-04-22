@@ -27,13 +27,14 @@ image = np.uint8(image)
 
 #%matplotlib auto
 cv2.imshow("Input", image)
-
+cv2.waitKey(0) 
 
 # In[4]:
 
 
 thresh = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
 cv2.imshow("Thresh", thresh)
+cv2.waitKey(0) 
 
 
 # In[5]:
@@ -52,6 +53,7 @@ img2 = color.label2rgb(labels, bg_label=0)
 # fig=plt.figure()
 # plt.imshow(img2, cmap='jet')
 cv2.imshow("color", img2)
+cv2.waitKey(0) 
 
 # In[ ]:
 
@@ -88,5 +90,8 @@ cv2.waitKey(0)
 count_output = np.max(labels);
 print("Total number of cells detected: ", count_output);
 
-
-
+# In[10]:
+    
+# save the output image
+cv2.imwrite('labeled_grayscale.png', image)
+cv2.imwrite('watershed_labels.png', np.uint8(img2*255))
