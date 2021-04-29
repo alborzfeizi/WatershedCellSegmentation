@@ -6,5 +6,6 @@
   * scikit-image 0.16.2
   * imutils 0.5.3
   * opencv 4.0.1
+  * for GUI -> PyQt5
   
   ![](Screenshot/Screenshot1.png)
