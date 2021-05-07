@@ -33,6 +33,8 @@ cv2.waitKey(0)
 
 
 thresh = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
+thresh2 = cv2.threshold(image, 20, 255, cv2.THRESH_BINARY)[1]
+thresh = thresh & thresh2;
 cv2.imshow("Thresh", thresh)
 cv2.waitKey(0) 
 
