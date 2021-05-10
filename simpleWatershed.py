@@ -13,9 +13,9 @@ import imutils
 import cv2
 
 ################################ script inputs ##############################
-threshold_percent = 5;
-denoise_value = 10;
-min_distance_value = 10;
+threshold_percent = 5; # used to remove background noise
+denoise_value = 10; # used for the open morphological operation
+min_distance_value = 10; # used for finding local minima (watershed seed)
 #############################################################################
 
 # In[2]:
