@@ -12,9 +12,13 @@ import numpy as np
 import imutils
 import cv2
 
+################################ script inputs ##############################
+threshold_percent = 5;
+denoise_value = 10;
+min_distance_value = 10;
+#############################################################################
 
 # In[2]:
-
 
 # load the image
 image = cv2.imread('sampleImages/A02_Bottom Slide_R_p01_0_A01f10d2.TIF', cv2.IMREAD_ANYDEPTH)
@@ -33,12 +37,12 @@ cv2.waitKey(0)
 
 
 thresh = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
-thresh2 = cv2.threshold(image, 12, 255, cv2.THRESH_BINARY)[1]
+thresh2 = cv2.threshold(image, threshold_percent*2.55, 255, cv2.THRESH_BINARY)[1]
 thresh = thresh & thresh2;
 
 # Denoise
 
-arr_size = 10
+arr_size = denoise_value;
 kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (arr_size, arr_size))
 thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
 
@@ -50,7 +54,7 @@ cv2.waitKey(0)
 
 
 D = ndimage.distance_transform_edt(thresh)
-localMax = peak_local_max(D, indices=False, min_distance=10, labels=thresh)
+localMax = peak_local_max(D, indices=False, min_distance=min_distance_value, labels=thresh)
 
 
 # In[10]:
