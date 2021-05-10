@@ -157,8 +157,11 @@ class Ui_MainWindow(object):
     def watershedClicked(self):
         labeledImg = copy.deepcopy(self.img)
         thresh = cv2.threshold(labeledImg, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
-        thresh2 = cv2.threshold(labeledImg, 20, 255, cv2.THRESH_BINARY)[1]
+        thresh2 = cv2.threshold(labeledImg, 12, 255, cv2.THRESH_BINARY)[1]
         thresh = thresh & thresh2;
+        arr_size = 10
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (arr_size, arr_size))
+        thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
         D = ndimage.distance_transform_edt(thresh)
         localMax = peak_local_max(D, indices=False, min_distance=self.min_distanceSpinBox.value(), labels=thresh)
         markers = ndimage.label(localMax, structure=np.ones((3, 3)))[0]
